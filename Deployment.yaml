@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cdcon-app
+  namespace: cdcon
+  labels:
+    app: cdcon-app
+spec:
+  selector:
+    matchLabels:
+      app: cdcon-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: cdcon-app
+        version: 2.0.1
+    spec:
+      containers:
+      - name: cdcon-app
+        image: docker.io/pritidesai/cdcon2021-app:latest
+        ports:
+        - containerPort: 8082
